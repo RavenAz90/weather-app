@@ -4,11 +4,121 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,600;1,100;1,200;1,300;1,400&family=Raleway:ital,wght@0,100;0,300;0,400;0,600;1,100;1,300;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/c8fd4fbd40.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>Weather app</title>
   </head>
   <body>
-    <h1>Hello</h1>
+    <div class="container">
+      <div class="card mt-3 shadow p-3 mb-5 rounded">
+        <div class="card-body">
+          <div class="row mt-3">
+            <div class="col-6">
+              <h1 id="chosen-city">Rome</h1>
+            </div>
+            <div class="col-4 mx-auto">
+              <form id="search-city">
+                <div class="form-group">
+                  <input
+                    type="search"
+                    class="form-control"
+                    placeholder="City"
+                    id="the-new-city"
+                  />
+                  <button
+                    type="submit"
+                    class="btn btn-outline-primary"
+                    id="submit-city"
+                  >
+                    Search
+                  </button>
+                  <button
+                    type="submit"
+                    class="btn btn-outline-success"
+                    id="local-temperature"
+                  >
+                    Current
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3 text-center">
+              <i class="fa-sharp fa-solid fa-sun sun-icon"></i>
+              <p class="time" id="current-time"></p>
+            </div>
+            <div class="col-4 mt-2 daily">
+              <p class="today" id="current-day"></p>
+              <p class="temperature-day">
+                <span class="actual-degrees">13°C</span>
+                <span class="temp-change" id="celsius"><a href="#">C</a></span
+                ><span class="temp-change">|</span
+                ><span class="temp-change" id="faren"><a href="#">F</a></span>
+              </p>
+              <p class="weather">Sunny</p>
+            </div>
+            <div class="col-3 mt-5">
+              <h4>Humidity</h4>
+              <h4>Wind</h4>
+            </div>
+            <div class="col-2 mt-5">
+              <p class="humid opacity-75" id="humid">6%</p>
+              <p class="windy opacity-75" id="windy">18 Km/h</p>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-2 days text-center">
+              <div>Tuesday</div>
+              <i class="fa-solid fa-cloud-sun"></i>
+              <span class="temp-max">15°</span><span class="temp-min">8°</span>
+            </div>
+            <div class="col-2 days text-center">
+              <div>Wednesday</div>
+              <i class="fa-solid fa-cloud-sun"></i>
+              <span class="temp-max">15°</span><span class="temp-min">8°</span>
+            </div>
+            <div class="col-2 days text-center">
+              <div>Thursday</div>
+              <i class="fa-solid fa-cloud-sun"></i>
+              <span class="temp-max">15°</span><span class="temp-min">8°</span>
+            </div>
+            <div class="col-2 days text-center">
+              <div>Friday</div>
+              <i class="fa-solid fa-cloud-sun"></i>
+              <span class="temp-max">15°</span><span class="temp-min">8°</span>
+            </div>
+            <div class="col-2 days text-center">
+              <div>Saturday</div>
+              <i class="fa-solid fa-cloud-sun"></i>
+              <span class="temp-max">15°</span><span class="temp-min">8°</span>
+            </div>
+            <div class="col-2 days text-center">
+              <div>Sunday</div>
+              <i class="fa-solid fa-cloud-sun"></i>
+              <span class="temp-max">15°</span><span class="temp-min">8°</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
