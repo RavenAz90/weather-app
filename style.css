@@ -92,3 +92,7 @@ h4 {
 .temp-min {
   color: rgb(12, 75, 142, 0.5);
 }
+
+.git-link {
+  margin-left: 10px;
+}
