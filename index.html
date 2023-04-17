@@ -27,63 +27,68 @@
   </head>
   <body>
     <div class="container">
-      <div class="card mt-3 shadow p-3 mb-5 rounded">
+      <div class="card mt-3 shadow p-3 mb-1 rounded">
         <div class="card-body">
-          <div class="row mt-3">
-            <div class="col-3">
-              <h1 id="chosen-city">Rome</h1>
+          <form id="search-form" class="mb-3">
+            <div class="row">
+              <div class="col-6">
+                <input
+                  type="search"
+                  placeholder="City"
+                  class="form-control mt-3"
+                  id="city-input"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  type="submit"
+                  value="Search"
+                  class="btn btn-outline-primary w-100"
+                  id="search-city"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  type="button"
+                  value="Current"
+                  class="btn btn-outline-success w-100"
+                  id="local-temperature"
+                />
+              </div>
             </div>
-            <div class="col-3 mx-auto">
-              <form id="search-city">
-                <div class="form-group">
-                  <input
-                    type="search"
-                    class="form-control"
-                    placeholder="City"
-                    id="the-new-city"
-                  />
-                  <button
-                    type="submit"
-                    class="btn btn-outline-primary"
-                    id="submit-city"
-                  >
-                    Search
-                  </button>
-                  <button
-                    type="submit"
-                    class="btn btn-outline-success"
-                    id="local-temperature"
-                  >
-                    Current
-                  </button>
-                </div>
-              </form>
+          </form>
+          <div class="row mt-3">
+            <div class="col-12">
+              <h1 id="chosen-city"></h1>
             </div>
           </div>
           <div class="row">
             <div class="col-3 text-center">
-              <i class="fa-sharp fa-solid fa-sun sun-icon"></i>
+              <img src="#" alt="#" id="icon" />
               <p class="time" id="current-time"></p>
             </div>
             <div class="col-4 mt-2 daily">
               <p class="today" id="current-day"></p>
               <p class="temperature-day d-flex">
-                <span class="actual-degrees">13°</span>
-                <span class="temp-change"
-                  ><a href="#" id="celsius">°C</a>|<a href="#" id="faren"
+                <span id="actual-degrees"></span>
+                <span class="temp-change mt-4"
+                  ><a href="#" class="active" id="celsius">°C</a>|<a
+                    href="#"
+                    id="fahrenheit"
                     >°F</a
                   ></span
                 >
               </p>
-              <p class="weather">Sunny</p>
+              <p class="weather" id="weather-description"></p>
             </div>
             <div class="col-3 mt-5">
               <h4>Humidity</h4>
               <h4>Wind</h4>
             </div>
             <div class="col-2 mt-5">
-              <p class="humid opacity-75" id="humid">6%</p>
-              <p class="windy opacity-75" id="windy">18 Km/h</p>
+              <p class="humid opacity-75" id="humid"></p>
+              <p class="windy opacity-75" id="windy"></p>
             </div>
           </div>
           <div class="row mt-4">
@@ -119,15 +124,15 @@
             </div>
           </div>
         </div>
-        <div class="col-5 git-link">
-          <a
-            href="https://github.com/RavenAz90/weather-app"
-            target="_blank"
-            class="git-hub"
-            >Open-source code</a
-          >
-          <span class="author">by Antea Ruggero</span>
-        </div>
+      </div>
+      <div class="col-5 git-link mt-2">
+        <a
+          href="https://github.com/RavenAz90/weather-app"
+          target="_blank"
+          class="git-hub"
+          >Open-source code</a
+        >
+        <span class="author">by Antea Ruggero</span>
       </div>
     </div>
     <script src="script.js"></script>

@@ -9,6 +9,9 @@ h4 {
   padding: 7px;
   text-shadow: 3px 3px 5px rgb(0, 0, 0, 0.2);
 }
+a {
+  text-decoration: none;
+}
 .container {
   max-width: 850px;
 }
@@ -23,13 +26,6 @@ h4 {
   margin-top: 15px;
 }
 
-.sun-icon {
-  text-align: center;
-  color: yellow;
-  font-size: 75px;
-  padding: 10px;
-  margin-left: -40px;
-}
 .time {
   margin-left: -40px;
   font-size: 35px;
@@ -38,6 +34,7 @@ h4 {
 }
 .temp-change {
   font-size: 20px;
+  margin-left: 5px;
 }
 
 .daily {
@@ -100,8 +97,18 @@ h4 {
 .git-link {
   margin-left: 10px;
 }
+.temp-change .active {
+  color: rgb(12, 75, 142);
+  cursor: default;
+}
 
-#celsius,
-#faren {
-  text-decoration: none;
+#weather-description:first-letter {
+  text-transform: capitalize;
+}
+
+#icon {
+  text-align: center;
+  font-size: 75px;
+  padding: 10px;
+  margin-left: -40px;
 }
