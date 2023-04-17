@@ -30,10 +30,10 @@
       <div class="card mt-3 shadow p-3 mb-5 rounded">
         <div class="card-body">
           <div class="row mt-3">
-            <div class="col-6">
+            <div class="col-3">
               <h1 id="chosen-city">Rome</h1>
             </div>
-            <div class="col-4 mx-auto">
+            <div class="col-3 mx-auto">
               <form id="search-city">
                 <div class="form-group">
                   <input
@@ -67,11 +67,13 @@
             </div>
             <div class="col-4 mt-2 daily">
               <p class="today" id="current-day"></p>
-              <p class="temperature-day">
-                <span class="actual-degrees">13°C</span>
-                <span class="temp-change" id="celsius"><a href="#">C</a></span
-                ><span class="temp-change">|</span
-                ><span class="temp-change" id="faren"><a href="#">F</a></span>
+              <p class="temperature-day d-flex">
+                <span class="actual-degrees">13°</span>
+                <span class="temp-change"
+                  ><a href="#" id="celsius">°C</a>|<a href="#" id="faren"
+                    >°F</a
+                  ></span
+                >
               </p>
               <p class="weather">Sunny</p>
             </div>
