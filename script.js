@@ -33,7 +33,6 @@ function search(city) {
 }
 
 function displayTemperature(response) {
-  console.log(response);
   let temperatureElement = document.querySelector("#actual-degrees");
   let cityElement = document.querySelector("#chosen-city");
   let descriptionElement = document.querySelector("#weather-description");
@@ -60,14 +59,14 @@ function getLocalTemperature() {
 }
 
 function showLocalTemperature(response) {
-  let latitude = response.data.coordinates.latitude;
-  let longitude = response.data.coordinates.longitude;
+  let latitude = response.coords.latitude;
+  let longitude = response.coords.longitude;
 
   let apiKey = "b77cdfa749f410t5o163c305200afe42";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}
 `;
 
-  axios.get(apiUrl).then(retrieveTemp);
+  axios.get(apiUrl).then(displayTemperature);
 }
 
 function handleSearch(event) {
@@ -111,4 +110,8 @@ fahrenheitLink.addEventListener("click", displayFahrenheit);
 
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", displayCelsius);
+
+let localTemperature = document.querySelector("#local-temperature");
+localTemperature.addEventListener("click", getLocalTemperature);
+
 search("Rome");
