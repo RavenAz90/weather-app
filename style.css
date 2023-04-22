@@ -102,6 +102,10 @@ a {
   cursor: default;
 }
 
+.weather-forecast {
+  text-align: center;
+}
+
 #weather-description:first-letter {
   text-transform: capitalize;
 }

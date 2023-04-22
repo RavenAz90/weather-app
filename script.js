@@ -32,6 +32,16 @@ function search(city) {
   axios.get(apiUrl).then(displayTemperature);
 }
 
+function getForecast(coordinates) {
+  let latitude = coordinates.latitude;
+  let longitude = coordinates.longitude;
+
+  let apiKey = "b77cdfa749f410t5o163c305200afe42";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayForcast);
+}
+
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#actual-degrees");
   let cityElement = document.querySelector("#chosen-city");
@@ -52,6 +62,8 @@ function displayTemperature(response) {
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
   iconElement.setAttribute("alt", response.data.condition.description);
+
+  getForecast(response.data.coordinates);
 }
 
 function getLocalTemperature() {
@@ -93,6 +105,25 @@ function displayCelsius(event) {
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
+function displayForcast(response) {
+  console.log(response.data);
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday"];
+  let forecastHTML = `<div class="row mt-4">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `              <div class="col-2 days text-center">
+    <div>${day}</div>
+    <i class="fa-solid fa-cloud-sun"></i>
+    <span class="temp-max">15°</span><span class="temp-min">8°</span>
+    </div>       
+    `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 let date = document.querySelector("#current-day");
 let time = document.querySelector("#current-time");
 let currentTime = new Date();
@@ -115,3 +146,4 @@ let localTemperature = document.querySelector("#local-temperature");
 localTemperature.addEventListener("click", getLocalTemperature);
 
 search("Rome");
+displayForcast();
