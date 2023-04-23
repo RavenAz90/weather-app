@@ -39,7 +39,7 @@ function getForecast(coordinates) {
   let apiKey = "b77cdfa749f410t5o163c305200afe42";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=metric`;
 
-  axios.get(apiUrl).then(displayForcast);
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function displayTemperature(response) {
@@ -105,20 +105,44 @@ function displayCelsius(event) {
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
-function displayForcast(response) {
-  console.log(response.data);
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+
+  days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
   let days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday"];
   let forecastHTML = `<div class="row mt-4">`;
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `              <div class="col-2 days text-center">
-    <div>${day}</div>
-    <i class="fa-solid fa-cloud-sun"></i>
-    <span class="temp-max">15°</span><span class="temp-min">8°</span>
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `              <div class="col-2 days text-center">
+    <div>${formatForecastDay(forecastDay.time)}</div>
+    <img src=${forecastDay.condition.icon_url} alt="" id="forecast-icon" />
+    <span class="temp-max">${Math.round(
+      forecastDay.temperature.maximum
+    )}°</span><span class="temp-min">${Math.round(
+          forecastDay.temperature.minimum
+        )}°</span>
     </div>       
     `;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
@@ -146,4 +170,3 @@ let localTemperature = document.querySelector("#local-temperature");
 localTemperature.addEventListener("click", getLocalTemperature);
 
 search("Rome");
-displayForcast();
